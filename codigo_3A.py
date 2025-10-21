@@ -10,14 +10,10 @@ class Menuapp:
         self.create_menu()
         self.text_area = Text(master, wrap='word', height=280, width=300)
         self.text_area.pack(side='left', fill='both', expand=True)
-    
+        
     def abrir_archivo(self):
-        archivo = filedialog.askdirectory(initialdir="/", title="secciona un archivo")
-        if archivo: 
-            print(f"se abrio un archivo:{archivo}")
-            
-        else:
-            messagebox.INFO("no se pudo abrir el archivo")
+        abrir = filedialog.askopenfilename(title="3º A", filetypes=(("3A" ,"*.py"), ("all files", "*.*")))
+        
     
     def create_menu(self):
         barra_menu = Menu(self.master)
@@ -25,7 +21,7 @@ class Menuapp:
 
         menu_cursos = Menu(barra_menu, tearoff=0)
         barra_menu.add_cascade(label="cursos", menu=menu_cursos)
-        menu_cursos.add_command(label="3º A", command=self.abrir_archivo)
+        menu_cursos.add_command(label="3º A", command=on_click)
         menu_cursos.add_command(label="3º B", command=on_click)
         menu_cursos.add_command(label="3ª C", command=on_click)
         menu_cursos.add_command(label="3º D", command=on_click)
